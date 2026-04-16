@@ -7,18 +7,18 @@ export class Navbar {
   constructor(private page: Page) {}
 
   static Items = {
-    Home: { label: 'Home', url: '/fashionhub/' },
-    Account: { label: 'Account', url: 'account' },
-    Clothing: { label: 'Clothing', url: 'products' },
-    Cart: { label: 'Shopping bag', url: 'cart' },
-    About: { label: 'About', url: 'about' }
+    Home: { label: 'Home' },
+    Account: { label: 'Account' },
+    Clothing: { label: 'Clothing' },
+    Cart: { label: 'Shopping bag' },
+    About: { label: 'About' }
   } as const;
 
   // --- NAVIGATION ---
  
   async navigateTo(item: (typeof Navbar.Items)[keyof typeof Navbar.Items]) {
-    await this.page.click(`nav a[href*="${item.url}"]`);
-    log(`Navigating to ${item.label} (${item.url})`);
+    await this.page.getByRole('link', { name: item.label }).click();
+    log(`Navigating to ${item.label} page`);
   }
 
   // --- ACTIVE STATE ---

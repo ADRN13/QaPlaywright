@@ -6,6 +6,7 @@ import { test, expect } from '../../fixtures/auth.fixture';
 
 
 
+
 test.describe('Login: should login successfully with valid credentials', () => {
     test('Login: Authentication - valid login', async ({ page}) => {
       const { username, password } = validLogin;
@@ -106,7 +107,7 @@ test.describe('Login: should allow login after multiple failed attempts', () => 
       // pre-check       
       await loginPage.isErrorHidden();
       await navbar.expectNoActiveItem();
-      await loginPage.isOnThisPage
+      await loginPage.isOnThisPage()
 
       for (let i = 0; i < numberOfRepetitions; i++) {
          

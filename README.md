@@ -1,7 +1,10 @@
-# FashionHub E2E tests
+### FashionHub E2E tests
 
 This project contains automated E2E tests written in Playwright.
 The tests are designed to run against different environments (local, staging, prod) and also inside Docker.
+
+# Application under test:
+https://pocketaces2.github.io/fashionhub/
 
 ---------------------------------------------------------------------
 
@@ -97,6 +100,11 @@ ENV=prod MOCK=true LOG=true npx playwright test --headed
 ```
 
 
+---------
+# Run base tests
+```bash
+npx playwright test --headed --debug
+```
 
 ---------------------------------------------------------------------
 

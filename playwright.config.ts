@@ -7,7 +7,7 @@ export default defineConfig({
   testDir: './tests',
 
   use: {
-    baseURL: BASE_URL,
+    baseURL:  process.env.BASE_URL || BASE_URL,
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',

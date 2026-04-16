@@ -1,11 +1,13 @@
 ﻿import { Page, expect, Locator} from '@playwright/test';
 import { createLogger  } from '../utils/logger';
+import { BASE_URL } from '../config/env';
+
 
 const log = createLogger('LoginPage');
 
 export class LoginPage {
   constructor(private page: Page) {}
-    readonly url = 'login.html';
+    readonly url = `${BASE_URL}login.html`;
 
   // --- NAVIGATION ---
   async goto() {
@@ -61,12 +63,12 @@ export class LoginPage {
   // --- ASSERTIONS ---
 
   async isOnThisPage() {
-    await expect(this.page).toHaveURL(new RegExp(this.url));
+    await expect(this.page).toHaveURL(this.url);
     log("On this page: ", this.page.url());
   }
   async isNotOnThisPage() {
-    await expect(this.page).not.toHaveURL(new RegExp(this.url));
-    log("On this page: ", this.page.url());
+    await expect(this.page).not.toHaveURL(this.url);
+    log("Not on this page: ", this.page.url());
   }
 
   async isErrorVisible() {

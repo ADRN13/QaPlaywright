@@ -1,11 +1,13 @@
 ﻿import { Page, expect } from '@playwright/test';
 import { createLogger  } from '../utils/logger';
+import { BASE_URL } from '../config/env';
 
 const log = createLogger('AccountPage');
 
 export class AccountPage {
   constructor(private page: Page) {}
-  readonly url = 'account.html';
+  readonly url = `${BASE_URL}account.html`;
+
  
 
   // --- NAVIGATION ---
@@ -37,11 +39,11 @@ export class AccountPage {
   // --- ASSERTIONS ---
 
   async isOnThisPage() {
-    await expect(this.page).toHaveURL(new RegExp(this.url));
+    await expect(this.page).toHaveURL(this.url);
     log("On Account page: ", this.page.url());
   }
   async isNotOnThisPage() {
-    await expect(this.page).not.toHaveURL(new RegExp(this.url));
+    await expect(this.page).not.toHaveURL(this.url);
     log("Not on Account page: ", this.page.url());
   }
 
